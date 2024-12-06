@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background-overlay {
+    background: linear-gradient(135deg, #6ddccf, #f3e99f, #f7c0ba, #d6a7f7); /* Vibrant pastel gradient */
+    background-size: cover;
+    background-attachment: fixed;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker transparent background */
+    border-radius: 15px;
+    margin-top: 20%;
+    padding: 40px;
+    max-width: 550px;
+    width: 100%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); /* More depth to the shadow */
+    text-align: center;
+    backdrop-filter: blur(15px); /* Stronger frosted glass effect */
+    color: #fff;
+}
+
+/* Adding subtle animations for the container */
+@keyframes containerAnimation {
+    0% { transform: scale(0.98); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.container {
+    animation: containerAnimation 0.5s ease-out forwards;
+}
+
+h2, h4 {
+    color: #ffffff; /* White text for headings */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Added shadow for better visibility */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff; /* Lighter white for better visibility */
+}
+
+input, select {
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #f7c0ba; /* Border color inspired by the gradient */
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #ff7e5f; /* Vibrant coral color on focus */
+    box-shadow: 0 0 10px #ff7e5f; /* Glowing effect */
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #ff7e5f; /* Brighter coral button color */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #ff5a3d; /* Darker shade of coral on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 94, 63, 0.3); /* Soft glow on hover */
+}
+
+input[type="submit"]:active {
+    transform: translateY(1px); /* Add small push effect when clicked */
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], select {
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter background for input fields */
+    color: #333; /* Darker text for better readability */
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, select:focus {
+    background-color: #fff; /* Highlight background on focus */
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="background-overlay">
+        <div class="container">
+            <h2>Diabetes Prediction Form</h2>
+            <h4>Provide your details below to predict diabetes based on model information.</h4>
+            <form action="/predict/" method="post">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+
+                <label for="age">Age:</label>
+                <input type="number" name="age" required>
+
+                <label for="hypertension">Hypertension:</label>
+                <select name="hypertension" id="hypertension" required>
+                    <option value="" disabled selected>Select Hypertension</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <label for="heart_disease">Heart Disease:</label>
+                <select name="heart_disease" id="heart_disease" required>
+                    <option value="" disabled selected>Select Heart Disease</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+
+                <label for="smoking_history">Smoking History:</label>
+                <select name="smoking_history" id="smoking_history" required>
+                    <option value="" disabled selected>Select Smoking History</option>
+                    <option value="never">Never</option>
+                    <option value="current">Current</option>
+                    <option value="ever">Not Current</option>
+                    <option value="former">Former</option>
+                    <option value="No Info">No Info</option>
+                </select>
+
+                <label for="bmi">BMI:</label>
+                <input type="number" name="bmi" step="0.01" required>
+
+                <label for="HbA1c_level">HbA1c Level:</label>
+                <input type="number" name="HbA1c_level" step="0.1" required>
+
+                <label for="blood_glucose_level">Blood Glucose Level:</label>
+                <input type="number" name="blood_glucose_level" required>
+
+                <input type="submit" value="Predict">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
